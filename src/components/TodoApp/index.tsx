@@ -74,10 +74,10 @@ function TodoApp() {
         handleDoneTodo={handleDoneTodos}
         handleEditTodo={handleEditTodos}
       />
-      <div>
+      {/* <div>
         <Button onClick={() => setIsDone(!isDone)}>Completed</Button>
         <Button onClick={() => setIsPending(!isPending)}>Pending</Button>
-      </div>
+      </div> */}
     </div>
   );
 }

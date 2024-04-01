@@ -32,21 +32,22 @@ function ListTodo(props: Props) {
           >
             {item.name}
           </div>
-          <Button
-            className="text-sm text-red-500"
-            onClick={() => handleDeleteTodo(item)}
-          >
-            Delete
-          </Button>
-          <Button
-            className="text-sm text-red-500"
-            onClick={() => handleEditTodos(item)}
-          >
-            Edit
-          </Button>
+          <div>
+            <Button
+              className="text-sm text-red-500"
+              onClick={() => handleDeleteTodo(item)}
+            >
+              Delete
+            </Button>
+            <Button
+              className="text-sm text-red-500"
+              onClick={() => handleEditTodos(item)}
+            >
+              Edit
+            </Button>
+          </div>
         </div>
       ))}
-
     </div>
   );
 }

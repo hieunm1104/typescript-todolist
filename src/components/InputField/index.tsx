@@ -14,7 +14,8 @@ function InputField({ handleClickAdd, id, handleUpdateTodos }: InputFieldProps) 
   const [isEditing, setIsEditing] = useState<Boolean>(id.isEditing);
   
   useEffect(() => {
-    
+    setUpdateValue(id.name);
+    setIsEditing(id.isEditing);
   }, [id]);
   
 
@@ -23,10 +24,11 @@ function InputField({ handleClickAdd, id, handleUpdateTodos }: InputFieldProps) 
     setValue("");
   };
 
-  const handleUpdateTodo = () =>{
+  const handleUpdateTodo = (event: any) => {
     handleUpdateTodos(updateValue, isEditing);
     setUpdateValue("");
     setIsEditing(false);
+    
   }
 
   return (
@@ -43,8 +45,15 @@ function InputField({ handleClickAdd, id, handleUpdateTodos }: InputFieldProps) 
               setUpdateValue(e.target.value);
               e.preventDefault();
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleUpdateTodos(updateValue, isEditing);
+                setUpdateValue("");
+                setIsEditing(false);
+              }
+            }}
           />
-          <Button variant="contained" onClick={handleUpdateTodo}>
+          <Button variant="contained" onClick={handleUpdateTodo} >
             Update task
           </Button>
         </>
@@ -59,6 +68,12 @@ function InputField({ handleClickAdd, id, handleUpdateTodos }: InputFieldProps) 
             onChange={(e) => {
               setValue(e.target.value);
               e.preventDefault();
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleClickAdd(value);
+                setValue("");
+              }
             }}
           />
           <Button variant="contained" onClick={handleClickAddTodo}>
